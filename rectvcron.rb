@@ -7,7 +7,7 @@ require(libpath + "./rectvlib.rb");
 
 binpath = "/home/kosame/bin/";
 reccmd  = "rectv.sh";
-aftercmd= "sleep 10; /home/kosame/bin/rectvsleep";
+aftercmd= "; sleep 10; /home/kosame/bin/rectvsleep.rb";
 cronfile= "/dev/shm/rectvcron"
 
 ## main ####################################################
