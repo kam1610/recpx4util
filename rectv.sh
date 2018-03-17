@@ -12,7 +12,6 @@ DURATION=`printf "%.0f" ${DURATION}`
 
 /usr/local/bin/recpx4      \
     --b25                  \
-    --strip                \
     --sid    hd            \
     --device /dev/px4-DTV2 \
     $1                     \
