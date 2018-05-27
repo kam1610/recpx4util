@@ -4,7 +4,7 @@ tmpDir     = "/dev/shm/";
 tmpPrefix  = "cropmp4_";
 tmpListFile= tmpDir + tmpPrefix + "lst";
 tmpList    = [];
-diffList   = [];
+
 
 if( ARGV.length     <  4 ||
     ARGV.length % 2 == 1 )
@@ -40,8 +40,6 @@ cmdTemplate= "ffmpeg \\ \n" +
   tmpFile= tmpDir + tmpPrefix + ix.to_s + ".ts";
   tmpList.push(tmpFile);
 
-  diffList.push(diffTime);
-
   cmd= cmdTemplate.sub("__fromTime__", fromTime.to_s);
   cmd= cmd.sub("__diffTime__", diffTime.to_s);
   cmd= cmd.sub("__dstFile__",  tmpFile);
@@ -68,13 +66,6 @@ tmpList.each(){|i|
   printf( cmd + "\n");
   printf( "%s\n", `#{cmd}` );
 }
-#cmd= "rm #{tmpListFile}";
-#printf( cmd + "\n");
-#printf( "%s\n", `#{cmd}` );
-
-sum= 0;
-diffList.each(){|i|
-  sum+= i;
-  printf("%02d:%02d ", sum/60, sum%60);
-}
-printf("\n");
+# cmd= "rm #{tmpListFile}";
+# printf( cmd + "\n");
+# printf( "%s\n", `#{cmd}` );

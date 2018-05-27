@@ -5,7 +5,7 @@
 #   %kosame ALL=NOPASSWD: /usr/sbin/rtcwake
 
 libpath= "/home/kosame/src/recpx4/";
-logpath= "/dev/shm/rectvsleep.log"
+logpath= "/dev/shm/rectvsleep.log";
 
 require("time");
 require(libpath + "./rectvlib.rb");
@@ -31,5 +31,6 @@ crontab= crontab.lines.each{|c|
 minTime-= 60*5;
 
 cmd= format("sudo rtcwake -m mem -t #{minTime.to_i} ");
-`echo #{cmd} >> #{logpath}`;
+print("wake up scheduled: " + minTime.to_s);
+`echo #{cmd} | tee -a #{logpath}`;
 `#{cmd}`

@@ -18,9 +18,9 @@ fromIx= ARGV[5].to_i;
 toIx  = ARGV[6].to_i;
 
 fromIx.upto(toIx){|ix|
-  cmd= format("rectvcron.rb \"%02d/%02d\" %02d %02d %s/%s%02d.mp4",
-              sDTime.month,
-              sDTime.day,
+  cmd= format("rectvcron.rb \"%02d/%02d %02d:%02d\" %02d %02d %s/%s%02d.mp4",
+              sDTime.month,  sDTime.day,
+              sDTime.hour,   sDTime.min,
               ARGV[1].to_i, # ch
               ARGV[2].to_i, # duration
               ARGV[3],      # dstdir

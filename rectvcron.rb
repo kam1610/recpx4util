@@ -7,7 +7,7 @@ require(libpath + "./rectvlib.rb");
 
 binpath = "/home/kosame/bin/";
 reccmd  = "rectv.sh";
-aftercmd= "; sleep 10; /home/kosame/bin/rectvsleep.rb";
+aftercmd= "sleep 10; /home/kosame/bin/rectvsleep.rb";
 cronfile= "/dev/shm/rectvcron"
 
 ## main ####################################################
@@ -45,7 +45,7 @@ crontab += " #{crontabDate}"      +
            " #{ARGV[1]}"          + # ch
            " #{duration}"         + # duration
            " #{ARGV[3]}"          + # dst
-           " #{aftercmd}\n";
+           " ; #{aftercmd}\n";
 
 # sort
 crontab= crontab.lines.sort{|a,b|
