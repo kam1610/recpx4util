@@ -4,11 +4,10 @@
 # please add the line below to sudoers file
 #   %kosame ALL=NOPASSWD: /usr/sbin/rtcwake
 
-libpath= "/home/kosame/src/recpx4/";
 logpath= "/dev/shm/rectvsleep.log";
 
 require("time");
-require(libpath + "./rectvlib.rb");
+require(__dir__ + "/rectvlib.rb");
 
 # get current crontab
 crontab= `crontab -l`;

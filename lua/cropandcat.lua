@@ -36,8 +36,8 @@ end
 function fetch_time_dialog()
    timestamp= math.floor(vlc.var.get(input,"time"))
    timestamp= string.format("%02d:%02d",
-                            timestamp/60,
-                            timestamp%60 )
+                            timestamp/1000000/60,
+                            (timestamp/1000000)%60 )
    crop_times= croptimes:get_text().." "..timestamp
    croptimes:set_text( crop_times )
 

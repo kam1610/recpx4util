@@ -24,7 +24,7 @@ DURATION=`printf "%.0f" ${DURATION}`
 
 /usr/local/bin/recpx4      \
     --b25                  \
-    --device /dev/px4-DTV2 \
+    --device /dev/px4-DTV3 \
     $1                     \
     ${DURATION}            \
     ${3}.ts

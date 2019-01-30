@@ -1,9 +1,7 @@
 #!/usr/bin/ruby
 
-libpath="/home/kosame/src/recpx4/";
-
 require("time");
-require(libpath + "./rectvlib.rb");
+require(__dir__ + "/rectvlib.rb");
 
 binpath = "/home/kosame/bin/";
 reccmd  = "rectv.sh";

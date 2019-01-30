@@ -4,7 +4,20 @@ require("time");
 
 if(ARGV.length != 7)
   printf("usage  : rectvweekly.rb <startdate> <ch> <duration> <dstdir> <prefix> <from#> <to#>\n");
-  printf("example: $ rectvweekly.rb \"02/18 22:30\" 30 /dev/shm/ mikochi_ 5 12\n");
+  printf("example: $ rectvweekly.rb \"02/18 22:30\" 27 30 /dev/shm/ mikochi_ 5 12\n");
+  printf("       nhk-general        27 \n");
+  printf("       nhk-etv            26 \n");
+  printf("       nihon tv     (ntv) 25 \n");
+  printf("       tokyo housou (tbs) 22 \n");
+  printf("       fuji tv      (cx ) 21 \n");
+  printf("       tv asahi     (anb) 24 \n");
+  printf("       tv tokyo     (tx ) 23 \n");
+  printf("       MX                 16 \n");
+  printf("       tv kanagawa  (tvk) 18 \n");
+  printf("       chiba tv           30 \n");
+  printf("       tv saitama         32 \n");
+  printf("       housou daigaku     28 \n");
+  exit 0;
 end
 
 sDTime= Time.parse(ARGV[0]);

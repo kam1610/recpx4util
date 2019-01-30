@@ -1,5 +1,14 @@
 require("time");
 
+class RECTV
+  TCPSERVER_PORT = 8889;
+  TIMEOUT        =             3;
+  CMD_GETSCHEDULE= "GETSCHEDULE";
+  CMD_GETPS      =       "GETPS";
+  CMD_TUNE       =        "TUNE";
+  CMD_STOP       =        "STOP";
+end
+
 ## compareCrontab ############################################
 def compareCrontabParse(a)
   if( a[0]    == nil ||
