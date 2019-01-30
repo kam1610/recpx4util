@@ -2,17 +2,12 @@
 -- $HOME/.local/share/vlc/lua/extensions/wakeTv.lua
 -- %APPDATA%\vlc\lua\extensions
 
--- command example -----------------------------------------
--- $ recpx4  --b25 --strip --udp --addr 192.168.2.100 --port 8888 --device /dev/px4-DTV3 26 - /dev/null
-
 stream_port= "8888"
 tv_host    = "haruka"
-tv_host_mac= "8c:89:a5:49:b7:b6"
+tv_host_mac= "00:00:00:00:00:00"
 client_cmd = "rectvclient.rb "
 -- sudo firewall-cmd --add-port=8888/udp
 -- sudo firewall-cmd --add-port=8889/udp
--- sudo /sbin/ether-wake 8c:89:a5:49:b7:b6
-
 
 -- descriptor ----------------------------------------------
 function descriptor()
