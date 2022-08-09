@@ -34,13 +34,23 @@ function urldecode(str)
 end
 
 function fetch_time_dialog()
+   print(string.format("rawtimestamp: %f", vlc.var.get(input,"time")));
+
+   
    timestamp= math.floor(vlc.var.get(input,"time"))
-   timestamp= string.format("%02d:%02d",
-                            timestamp/1000000/60,
-                            (timestamp/1000000)%60 )
+
+   local min= math.floor(timestamp/1000000/60);
+   local sec= math.floor((timestamp/1000000)%60);
+   local msec= (timestamp - min*60*1000000 - sec*1000000) / 1000;
+
+   print(string.format("timestamp: %d, min: %d, sec: %d, msec: %d", timestamp, min, sec, msec));
+
+   timestamp= string.format("%02d:%02d.%03d",
+                            min,
+                            sec,
+                            msec)
    crop_times= croptimes:get_text().." "..timestamp
    croptimes:set_text( crop_times )
-
 
 
    local item = vlc.input.item()
