@@ -1,5 +1,6 @@
 -- "crop-and-concat" -- VLC Extension --
 -- $HOME/.local/share/vlc/lua/extensions/cropandcat.lua
+-- $HOME/.var/app/org.videolan.VLC/data/vlc/lua/extensions/
 
 function descriptor()
 	return {title = "crop and concat";
@@ -34,40 +35,32 @@ function urldecode(str)
 end
 
 function fetch_time_dialog()
-   print(string.format("rawtimestamp: %f", vlc.var.get(input,"time")));
-
-   
    timestamp= math.floor(vlc.var.get(input,"time"))
+   local min= math.floor(timestamp/1000000/60)
+   local sec= math.floor((timestamp/1000000)%60)
+   local msec= (timestamp - min*60*1000000 - sec*1000000) / 1000
 
-   local min= math.floor(timestamp/1000000/60);
-   local sec= math.floor((timestamp/1000000)%60);
-   local msec= (timestamp - min*60*1000000 - sec*1000000) / 1000;
+   print(string.format("timestamp: %f, min: %f, sec: %f, msec: %f", timestamp, min, sec, msec))
 
-   print(string.format("timestamp: %d, min: %d, sec: %d, msec: %d", timestamp, min, sec, msec));
-
-   timestamp= string.format("%02d:%02d.%03d",
-                            min,
-                            sec,
-                            msec)
+   timestamp= string.format("%02d:%02d.%02d", min//1, sec//1, msec//1)
+   print( timestamp )
    crop_times= croptimes:get_text().." "..timestamp
    croptimes:set_text( crop_times )
-
 
    local item = vlc.input.item()
    local uri  = item:uri()
    uri= string.gsub(uri, '^file://', '')
    uri= urldecode(uri)
 
-   dsturi= string.gsub(uri, "(.*/)(.*)\.mp4", "%2")
+   dsturi= string.gsub(uri, "(.*/)(.*)%.mp4", "%2")
    
    cmdtext= "cropmp4.rb "..uri
    cmdtext= cmdtext.." "..croptimes:get_text()
    cmdtext= cmdtext.." ".."/dev/shm/"..dsturi..".crop.mp4"
+   print(cmdtext)
    
    cmd:set_text( cmdtext )
 
    -- os.execute(strCmd)
 
 end
-
-
